@@ -173,4 +173,9 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('short_description');
     }
+
+    public function getAttributeSetName()
+    {
+        return $this->getData('attribute_set_name');
+    }
 }

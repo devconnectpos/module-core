@@ -76,4 +76,9 @@ class CustomerAddress extends ApiDataAbstract
     {
         return $this->getData('telephone');
     }
+
+    public function getCompany()
+    {
+        return $this->getData('company');
+    }
 }
