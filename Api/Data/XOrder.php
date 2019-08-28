@@ -116,6 +116,7 @@ class XOrder extends ApiDataAbstract
     {
         return $this->getData('xRefNum');
     }
+
     public function getSellers()
     {
         return explode(",", $this->getData('sm_seller_ids'));

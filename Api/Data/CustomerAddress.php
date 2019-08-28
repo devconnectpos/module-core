@@ -39,17 +39,29 @@ class CustomerAddress extends ApiDataAbstract
 
     public function getFirstName()
     {
-        return $this->getData('firstname');
+        return (
+            $this->getData('first_name') === null ?
+            $this->getData('firstname') :
+            $this->getData('first_name')
+        );
     }
 
     public function getLastName()
     {
-        return $this->getData('lastname');
+        return (
+            $this->getData('last_name') === null ?
+            $this->getData('lastname') :
+            $this->getData('last_name')
+        );
     }
 
     public function getMiddleName()
     {
-        return $this->getData('middlename');
+        return (
+            $this->getData('middle_name') === null ?
+            $this->getData('middlename') :
+            $this->getData('middle_name')
+        );
     }
 
     public function getPostcode()
