@@ -54,6 +54,11 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract {
         return $this->getData('row_total');
     }
 
+    public function getQtyShipped()
+    {
+        return floatval($this->getData('qty_shipped'));
+    }
+
     public function getRowTotalInclTax()
     {
         return $this->getData('row_total_incl_tax');
@@ -172,5 +177,10 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract {
     public function getPriceInclTax()
     {
         return $this->getData('price_incl_tax');
+    }
+
+
+    public function getProduct(){
+        return $this->getData('product');
     }
 }

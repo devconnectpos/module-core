@@ -100,5 +100,9 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('retail_guest_id');
     }
+
+    public function getRewardPoint(){
+        return $this->getData('reward_point');
+    }
 }
 
