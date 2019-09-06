@@ -181,9 +181,13 @@ class XOrder extends ApiDataAbstract
     {
         return $this->getData('is_exchange');
     }
+
     public function getPrintTimeCounter()
     {
         return $this->getData('print_time_counter');
     }
 
+    public function getIsPwa(){
+        return $this->getData('is_pwa');
+    }
 }

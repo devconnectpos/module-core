@@ -55,4 +55,9 @@ class XCategory extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('image_url');
     }
+
+    public function getCategoryChild()
+    {
+        return $this->getData('category_child');
+    }
 }

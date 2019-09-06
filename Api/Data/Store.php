@@ -66,4 +66,33 @@ class Store extends ApiDataAbstract
     {
         return $this->getData('price_format');
     }
+
+    public function getLogoImage() {
+        return $this->getData('logo');
+    }
+
+    public function getBrandName() {
+        return $this->getData('brand_name');
+    }
+
+    public function getThemeColor() {
+        return $this->getData('theme_color');
+    }
+
+    public function getIsIntegrateRp() {
+        return $this->getData('is_integrate_rp');
+    }
+
+    public function getIsIntegrateGc() {
+        return $this->getData('is_integrate_gc');
+    }
+
+    public function getOutOfStock() {
+        return $this->getData('out_of_stock');
+    }
+
+    public function getVisibility() {
+        return $this->getData('visibility');
+    }
+
 }
