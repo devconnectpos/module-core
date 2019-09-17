@@ -95,4 +95,7 @@ class Store extends ApiDataAbstract
         return $this->getData('visibility');
     }
 
+    public function getDefaultOrderAddress() {
+        return $this->getData('default_order_address');
+    }
 }
