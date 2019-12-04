@@ -120,9 +120,15 @@ class Outlet extends ApiDataAbstract
     {
         return $this->getData('allow_click_and_collect') === '1';
     }
+
     public function getCategoryId()
     {
         return $this->getData('category_id');
+    }
+
+    public function getAllowOutOfStock()
+    {
+        return $this->getData('allow_out_of_stock') === '1';
     }
 }
 
