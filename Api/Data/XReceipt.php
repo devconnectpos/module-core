@@ -20,6 +20,11 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         return $this->getData('logo_url');
     }
 
+    public function getInsertHeaderLogo()
+    {
+        return $this->getData('insert_header_logo');
+    }
+
     public function getName()
     {
         return $this->getData('name');
@@ -33,6 +38,11 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     public function getFooterUrl()
     {
         return $this->getData('footer_url');
+    }
+
+    public function getInsertFooterLogo()
+    {
+        return $this->getData('insert_footer_logo');
     }
 
     public function getHeader()
