@@ -39,6 +39,6 @@ class Register extends ApiDataAbstract
 
     public function getIsPrintReceipt()
     {
-        return $this->getData('is_print_receipt');
+        return $this->getData('is_print_receipt') == 1;
     }
 }
