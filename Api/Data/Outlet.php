@@ -130,6 +130,11 @@ class Outlet extends ApiDataAbstract
     {
         return $this->getData('allow_out_of_stock') === '1';
     }
+
+    public function getLocationId()
+    {
+        return $this->getData('location_id');
+    }
 }
 
 
