@@ -187,16 +187,28 @@ class XOrder extends ApiDataAbstract
         return $this->getData('print_time_counter');
     }
 
-    public function getIsPwa(){
+    public function getIsPwa()
+    {
         return $this->getData('is_pwa');
     }
 
-    public function getPickupOutletId(){
+    public function getPickupOutletId()
+    {
         return $this->getData('pickup_outlet_id');
     }
 
     public function getInvoiceCollection()
     {
         return $this->getData('invoice_collection');
+    }
+
+    public function getEstimatedAvailability()
+    {
+        return $this->getData('estimated_availability');
+    }
+
+    public function getLocationId()
+    {
+        return $this->getData('mageworx_pickup_location_id');
     }
 }
