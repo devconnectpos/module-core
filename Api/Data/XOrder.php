@@ -122,6 +122,11 @@ class XOrder extends ApiDataAbstract
         return explode(",", $this->getData('sm_seller_ids'));
     }
 
+    public function getSellersUsername()
+    {
+        return $this->getData('sm_seller_username');
+    }
+
     public function getShippingMethod()
     {
         return $this->getData('shipping_method');
