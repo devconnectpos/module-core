@@ -216,4 +216,9 @@ class XOrder extends ApiDataAbstract
     {
         return $this->getData('mageworx_pickup_location_id');
     }
+
+    public function getCommentHistory()
+    {
+        return $this->getData('comment_history');
+    }
 }
