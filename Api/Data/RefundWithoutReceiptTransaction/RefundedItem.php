@@ -21,11 +21,6 @@ class RefundedItem extends ApiDataAbstract
         return $this->getData('transaction_id');
     }
 
-    public function getShiftAdjustmentId()
-    {
-        return $this->getData('shift_adjustment_id');
-    }
-
     public function getProductId()
     {
         return $this->getData('product_id');
