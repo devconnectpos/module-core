@@ -221,4 +221,9 @@ class XOrder extends ApiDataAbstract
     {
         return $this->getData('comment_history');
     }
+
+    public function getIsRefundedPendingOrder()
+    {
+        return $this->getData('is_refunded_pending_order');
+    }
 }
