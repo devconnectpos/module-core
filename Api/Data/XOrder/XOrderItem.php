@@ -76,19 +76,13 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract {
         }
         if (isset($productOptions['bundle_selection_attributes'])) {
             $option = array_merge($option, $this->unserialize($productOptions['bundle_selection_attributes']));
+	        if ($this->getData('price') && $this->getData('price') != 0) {
+	        	$option['price'] = $this->getData('price');
+	        }
         }
 
         // integrate gift card or another extension
         if (!isset($option['options']) && isset($productOptions['aw_gc_amount'])) {
-            //$fieldAllow = [
-            //    'aw_gc_amount',
-            //    'aw_gc_sender_name',
-            //    'aw_gc_recipient_name',
-            //    'aw_gc_sender_email',
-            //    'aw_gc_recipient_email',
-            //    'aw_gc_delivery_date',
-            //    'aw_gc_created_codes'
-            //    ];
             $fieldAllow = [
                 'Gift Card Amount' => 'aw_gc_amount',
                 'Gift Card Sender' => 'aw_gc_sender_name',

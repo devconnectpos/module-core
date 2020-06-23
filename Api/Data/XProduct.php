@@ -134,4 +134,19 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('additional_data');
     }
+	
+	public function getDimensionslength()
+	{
+		return $this->getData('dimensionslength');
+	}
+	
+	public function getDimensionswidth()
+	{
+		return $this->getData('dimensionswidth');
+	}
+	
+	public function getDimensionsheight()
+	{
+		return $this->getData('dimensionsheight');
+	}
 }
