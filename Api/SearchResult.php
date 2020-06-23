@@ -126,6 +126,26 @@ class SearchResult extends DataObject
     }
 
     /**
+     * @param $messageText
+     *
+     * @return $this
+     */
+    public function setMessageText($messageText)
+    {
+        $this->setData('message_text', $messageText);
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessageText()
+    {
+        return $this->getData('message_text');
+    }
+
+    /**
      * @return mixed
      */
     public function getTotalCount()
@@ -288,6 +308,7 @@ class SearchResult extends DataObject
                 'search_criteria'    => $this->getSearchCriteria(),
                 'total_count'        => $this->getTotalCount(),
                 'message_error'      => $this->getMessageError(),
+                'message_text'       => $this->getMessageText(),
                 'last_page_number'   => $this->getLastPageNumber(),
                 'cache_time'         => $this->getCacheTime(),
                 'is_load_from_cache' => $this->getIsLoadFromCache() === true,
