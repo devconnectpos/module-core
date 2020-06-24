@@ -43,6 +43,11 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         return $this->getData('email');
     }
 
+    public function getPrefix()
+    {
+        return $this->getData('prefix');
+    }
+
     public function getFirstName()
     {
         return $this->getData('firstname');
@@ -51,6 +56,15 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     public function getLastName()
     {
         return $this->getData('lastname');
+    }
+
+    public function getMiddleName()
+    {
+        return (
+        $this->getData('middle_name') === null ?
+            $this->getData('middlename') :
+            $this->getData('middle_name')
+        );
     }
 
     public function getGender()
@@ -91,6 +105,7 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         return json_decode($this->getData('retail_veriface'), true);
 
     }
+
     public function getSubscription()
     {
         return $this->getData('subscription');
@@ -103,6 +118,16 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
 
     public function getRewardPoint(){
         return $this->getData('reward_point');
+    }
+
+    public function getOccupation()
+    {
+        return $this->getData('occupation');
+    }
+
+    public function getCustomerOccupationOtherName()
+    {
+        return $this->getData('customer_occupation_other_name');
     }
 }
 
