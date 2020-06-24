@@ -37,6 +37,11 @@ class CustomerAddress extends ApiDataAbstract
         return $this->getData('country_id');
     }
 
+    public function getPrefix()
+    {
+        return $this->getData('prefix');
+    }
+
     public function getFirstName()
     {
         return (
