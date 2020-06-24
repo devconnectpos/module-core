@@ -129,5 +129,10 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('customer_occupation_other_name');
     }
+
+    public function getDob()
+    {
+        return $this->getData('dob');
+    }
 }
 
