@@ -149,4 +149,24 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
 	{
 		return $this->getData('dimensionsheight');
 	}
+
+	public function getPrintLabelValue()
+    {
+        return $this->getData('print_label_value');
+    }
+	
+	public function getEan()
+	{
+		return $this->getData('ean');
+	}
+
+    public function getBarcode()
+    {
+        return $this->getData('barcode');
+    }
+
+    public function getUpc()
+    {
+        return $this->getData('upc');
+    }
 }
