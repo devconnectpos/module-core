@@ -141,4 +141,14 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('custom_date');
     }
+    
+    public function getDisplayCustomTax()
+    {
+    	return $this->getData('display_custom_tax');
+    }
+	
+	public function getCustomTaxMultiplier()
+	{
+		return $this->getData('custom_tax_multiplier');
+	}
 }
