@@ -141,14 +141,59 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('custom_date');
     }
-    
+
     public function getDisplayCustomTax()
     {
     	return $this->getData('display_custom_tax');
     }
-	
+
 	public function getCustomTaxMultiplier()
 	{
 		return $this->getData('custom_tax_multiplier');
 	}
+
+    public function getPaperSize()
+    {
+        return $this->getData('paper_size');
+    }
+
+    public function getStyleCustomerInfo()
+    {
+        return $this->getData('style_customer_info');
+    }
+
+    public function getStoreInfo()
+    {
+        return $this->getData('store_info');
+    }
+
+    public function getStorePhone()
+    {
+        return $this->getData('store_phone');
+    }
+
+    public function getStoreWebsite()
+    {
+        return $this->getData('store_website');
+    }
+
+    public function getStoreEmail()
+    {
+        return $this->getData('store_email');
+    }
+
+    public function getEnableTermsAndConditions()
+    {
+        return $this->getData('enable_terms_and_conditions');
+    }
+
+    public function getTermsAndConditions()
+    {
+        return $this->getData('terms_and_conditions');
+    }
+
+    public function getEnableCustomerSignature()
+    {
+        return $this->getData('enable_customer_signature');
+    }
 }
