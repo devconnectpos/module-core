@@ -135,6 +135,16 @@ class Outlet extends ApiDataAbstract
     {
         return $this->getData('location_id');
     }
+
+    public function getInsertOutletLogoFrom()
+    {
+        return $this->getData('insert_outlet_logo_from');
+    }
+
+    public function getOutletLogoUrl()
+    {
+        return $this->getData('outlet_logo_url');
+    }
 }
 
 
