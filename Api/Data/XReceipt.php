@@ -144,13 +144,13 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
 
     public function getDisplayCustomTax()
     {
-    	return $this->getData('display_custom_tax');
+        return $this->getData('display_custom_tax');
     }
 
-	public function getCustomTaxMultiplier()
-	{
-		return $this->getData('custom_tax_multiplier');
-	}
+    public function getCustomTaxMultiplier()
+    {
+        return $this->getData('custom_tax_multiplier');
+    }
 
     public function getPaperSize()
     {
@@ -195,5 +195,10 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     public function getEnableCustomerSignature()
     {
         return $this->getData('enable_customer_signature');
+    }
+    
+    public function getCustomTaxLabel()
+    {
+        return $this->getData('custom_tax_label');
     }
 }
