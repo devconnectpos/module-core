@@ -134,17 +134,17 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('additional_data');
     }
-	
+
 	public function getDimensionslength()
 	{
 		return $this->getData('dimensionslength');
 	}
-	
+
 	public function getDimensionswidth()
 	{
 		return $this->getData('dimensionswidth');
 	}
-	
+
 	public function getDimensionsheight()
 	{
 		return $this->getData('dimensionsheight');
@@ -154,7 +154,7 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('print_label_value');
     }
-	
+
 	public function getEan()
 	{
 		return $this->getData('ean');
@@ -173,5 +173,10 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     public function getUnit()
     {
         return $this->getData('unit');
+    }
+
+    public function getBackorders()
+    {
+        return $this->getData('back_orders');
     }
 }

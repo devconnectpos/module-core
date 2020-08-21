@@ -187,4 +187,9 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract {
     public function getProduct(){
         return $this->getData('product');
     }
+
+    public function getWarehouseId()
+    {
+        return $this->getData('warehouse_id');
+    }
 }
