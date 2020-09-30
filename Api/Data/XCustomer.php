@@ -134,5 +134,15 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('dob');
     }
+
+    public function getScgCustomerGroup()
+    {
+        return $this->getData('scg_customer_group');
+    }
+
+    public function getScgCustomerGroupName()
+    {
+        return $this->getData('scg_customer_group_name');
+    }
 }
 
