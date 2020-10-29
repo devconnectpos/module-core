@@ -22,15 +22,15 @@ class ShippingMethod extends ApiDataAbstract
     }
 
     public function getIsActive() {
-        return $this->getData('is_active') === '1';
+        return $this->getData('is_active') == '1';
     }
 
     public function getMagentoActive() {
-        return $this->getData('magento_active') === '1';
+        return $this->getData('magento_active') == '1';
     }
 
     public function getShowmethod() {
-        return $this->getData('showmethod') === '1';
+        return $this->getData('showmethod') == '1';
     }
 
 }
