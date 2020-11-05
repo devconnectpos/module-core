@@ -135,6 +135,9 @@ class Outlet extends ApiDataAbstract
     {
         return $this->getData('location_id');
     }
+    
+    public function getDefaultGuestCustomerEmail()
+    {
+        return $this->getData('default_guest_customer_email');
+    }
 }
-
-
