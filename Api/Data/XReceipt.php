@@ -92,7 +92,6 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
 
     public function getOrderInfo()
     {
-
         return json_decode($this->getData('order_info'), true);
     }
 
@@ -200,5 +199,15 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     public function getCustomTaxLabel()
     {
         return $this->getData('custom_tax_label');
+    }
+
+    public function getDisplayTwoLanguages()
+    {
+        return $this->getData('display_two_languages');
+    }
+
+    public function getSecondLanguage()
+    {
+        return $this->getData('second_language');
     }
 }

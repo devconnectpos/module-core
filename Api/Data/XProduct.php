@@ -169,4 +169,9 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('upc');
     }
+    
+    public function getTopCategory()
+    {
+        return $this->getData('top_category');
+    }
 }
