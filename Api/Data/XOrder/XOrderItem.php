@@ -20,6 +20,11 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         return $this->getData('product_id');
     }
 
+    public function getItemId()
+    {
+        return $this->getData('item_id');
+    }
+
     public function getTypeId()
     {
         return $this->getData('product_type');
@@ -189,12 +194,12 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('serial_number');
     }
-    
+
     public function getDiscountPercent()
     {
         return $this->getData('discount_percent');
     }
-    
+
     public function getDiscountAmount()
     {
         return $this->getData('discount_amount');
