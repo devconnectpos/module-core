@@ -224,21 +224,26 @@ class XOrder extends ApiDataAbstract
     
     public function getOriginOrderId()
     {
-    	return $this->getData('origin_order_id');
+        return $this->getData('origin_order_id');
     }
-	
-	public function getOriginOrderRetailId()
-	{
-		return $this->getData('origin_order_retail_id');
-	}
+    
+    public function getOriginOrderRetailId()
+    {
+        return $this->getData('origin_order_retail_id');
+    }
     
     public function getRwrTransactionId()
     {
-    	return $this->getData('rwr_transaction_id');
+        return $this->getData('rwr_transaction_id');
     }
     
     public function getExchangeOrderIds()
     {
-    	return json_decode($this->getData('exchange_order_ids'), true);
+        return json_decode($this->getData('exchange_order_ids'), true);
+    }
+
+    public function getItemAppliedTaxes()
+    {
+        return $this->getData('item_applied_taxes');
     }
 }
