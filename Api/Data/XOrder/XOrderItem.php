@@ -180,6 +180,11 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         return $this->getData('tax_amount');
     }
 
+    public function getTaxPercent()
+    {
+        return $this->getData('tax_percent');
+    }
+
     public function getPriceInclTax()
     {
         return $this->getData('price_incl_tax');
