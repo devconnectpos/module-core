@@ -8,29 +8,32 @@
 
 namespace SM\Core\Api\Data;
 
-
 use SM\Core\Api\Data\Contract\ApiDataAbstract;
 
 class ShippingMethod extends ApiDataAbstract
 {
-    public function getCode() {
+    public function getCode()
+    {
         return $this->getData('code');
     }
 
-    public function getLabel() {
+    public function getLabel()
+    {
         return $this->getData('label');
     }
 
-    public function getIsActive() {
+    public function getIsActive()
+    {
         return $this->getData('is_active') == '1';
     }
 
-    public function getMagentoActive() {
+    public function getMagentoActive()
+    {
         return $this->getData('magento_active') == '1';
     }
 
-    public function getShowmethod() {
-        return $this->getData('showmethod') == '1';
+    public function getAdditionalData()
+    {
+        return $this->getData('additional_data');
     }
-
 }
