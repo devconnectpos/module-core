@@ -2,88 +2,116 @@
 
 namespace SM\Core\Api\Data;
 
+class PWAProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
+{
 
-class PWAProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract {
-
-    public function getId() {
+    public function getId()
+    {
         return $this->getData('entity_id');
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->getData('name');
     }
 
-    public function getSku() {
+    public function getSku()
+    {
 
         return $this->getData('sku');
     }
 
-    public function getPrice() {
+    public function getPrice()
+    {
 
         return $this->getData('price');
     }
 
-    public function getSpecialPrice() {
+    public function getSpecialPrice()
+    {
 
         return $this->getData('special_price');
     }
 
-    public function getSpecialFromDate() {
+    public function getSpecialFromDate()
+    {
 
         return $this->getData('special_from_date');
     }
 
-    public function getSpecialToDate() {
+    public function getSpecialToDate()
+    {
 
         return $this->getData('special_to_date');
     }
 
-    public function getTypeId() {
+    public function getTypeId()
+    {
 
         return $this->getData('type_id');
     }
 
-    public function getCustomAttributes() {
+    public function getCustomAttributes()
+    {
 
         return $this->getData('custom_attributes');
     }
 
-    public function getOriginImage() {
+    public function getOriginImage()
+    {
 
         return $this->getData('origin_image');
     }
 
-    public function getMediaGallery() {
+    public function getMediaGallery()
+    {
 
         return $this->getData('media_gallery');
     }
 
-    public function getStockItems() {
+    public function getStockItems()
+    {
 
         return $this->getData('stock_items');
     }
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->getData('description');
     }
 
-    public function getCustomizableOptions() {
+    public function getCustomizableOptions()
+    {
         return $this->getData('customizable_options');
     }
 
-    public function getXOptions() {
+    public function getXOptions()
+    {
         return $this->getData('x_options');
     }
 
-    public function getRelatedProductIds() {
+    public function getRelatedProductIds()
+    {
         return $this->getData('related_product_ids');
     }
 
-    public function getCheckRelatedProduct() {
+    public function getCheckRelatedProduct()
+    {
         return $this->getData('check_related_product');
     }
 
-    public function getVisibility() {
+    public function getVisibility()
+    {
         return $this->getData('visibility');
+    }
+    
+    public function getCategoryPaths()
+    {
+        return $this->getData('category_paths');
+    }
+    
+    public function getStoreFrontAttributes()
+    {
+        return $this->getData('store_front_attributes');
     }
 }

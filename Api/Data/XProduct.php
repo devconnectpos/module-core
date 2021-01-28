@@ -174,4 +174,14 @@ class XProduct extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('top_category');
     }
+    
+    public function getCategoryPaths()
+    {
+        return $this->getData('category_paths');
+    }
+
+    public function getStoreFrontAttributes()
+    {
+        return $this->getData('store_front_attributes');
+    }
 }
