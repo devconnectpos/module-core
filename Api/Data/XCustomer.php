@@ -9,7 +9,6 @@ namespace SM\Core\Api\Data;
 
 class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
 {
-
     protected $customer;
 
     public function __construct(
@@ -89,7 +88,6 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
             return [];
         }
         return json_decode($this->getData('retail_veriface'), true);
-
     }
     public function getSubscription()
     {
@@ -101,8 +99,13 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         return $this->getData('retail_guest_id');
     }
 
-    public function getRewardPoint(){
+    public function getRewardPoint()
+    {
         return $this->getData('reward_point');
     }
-}
 
+    public function getRetailTelephone2()
+    {
+        return $this->getData('retail_telephone_2');
+    }
+}
