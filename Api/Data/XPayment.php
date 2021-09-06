@@ -50,6 +50,11 @@ class XPayment extends ApiDataAbstract
         return $this->getData('is_active') == 1;
     }
 
+    public function getRegisterId()
+    {
+        return $this->getData('register_id');
+    }
+
     public function getIsDummy()
     {
         return $this->getData('is_dummy') == 1;
