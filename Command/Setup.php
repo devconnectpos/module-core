@@ -21,6 +21,10 @@ use SM\PWA\Setup\UpgradeSchema as PWAUpgradeSchema;
 use SM\PWABanner\Setup\InstallSchema as PWABannerInstallSchema;
 use SM\PWAKeyword\Setup\InstallSchema as PWAKeywordInstallSchema;
 use SM\RefundWithoutReceipt\Setup\InstallSchema as RefundWithoutReceiptInstallSchema;
+use SM\Sales\Setup\UpgradeData as SalesUpgradeData;
+use SM\Sales\Setup\UpgradeSchema as SalesUpgradeSchema;
+use SM\Shift\Setup\UpgradeSchema as ShiftUpgradeSchema;
+use SM\Shipping\Setup\UpgradeSchema as ShippingUpgradeSchema;
 
 class Setup extends Command
 {
@@ -89,6 +93,26 @@ class Setup extends Command
      */
     private $refundWithoutReceiptInstallSchema;
 
+    /**
+     * @var SalesUpgradeData
+     */
+    private $salesUpgradeData;
+
+    /**
+     * @var SalesUpgradeData
+     */
+    private $salesUpgradeSchema;
+
+    /**
+     * @var ShiftUpgradeSchema
+     */
+    private $shiftUpgradeSchema;
+
+    /**
+     * @var ShippingUpgradeSchema
+     */
+    private $shippingUpgradeSchema;
+
     public function __construct(
         State $appState,
         SchemaSetupInterface $schemaSetup,
@@ -104,6 +128,10 @@ class Setup extends Command
         PWABannerInstallSchema $pwaBannerInstallSchema,
         PWAKeywordInstallSchema $pwaKeywordInstallSchema,
         RefundWithoutReceiptInstallSchema $refundWithoutReceiptInstallSchema,
+        SalesUpgradeData $salesUpgradeData,
+        SalesUpgradeSchema $salesUpgradeSchema,
+        ShiftUpgradeSchema $shiftUpgradeSchema,
+        ShippingUpgradeSchema $shippingUpgradeSchema,
 
         string $name = null
     ) {
@@ -121,6 +149,10 @@ class Setup extends Command
         $this->pwaBannerInstallSchema = $pwaBannerInstallSchema;
         $this->pwaKeywordInstallSchema = $pwaKeywordInstallSchema;
         $this->refundWithoutReceiptInstallSchema = $refundWithoutReceiptInstallSchema;
+        $this->salesUpgradeData = $salesUpgradeData;
+        $this->salesUpgradeSchema = $salesUpgradeSchema;
+        $this->shiftUpgradeSchema = $shiftUpgradeSchema;
+        $this->shippingUpgradeSchema = $shippingUpgradeSchema;
 
         parent::__construct($name);
     }
@@ -157,6 +189,10 @@ class Setup extends Command
      */
     public function setup(OutputInterface $output): void
     {
+        // Shift
+        $output->writeln("-- Shift");
+        $this->shiftUpgradeSchema->execute($this->schemaSetup, $output);
+
         // Customer
         $output->writeln("-- Customer");
         $this->customerUpgradeSchema->execute($this->schemaSetup, $output);
@@ -169,14 +205,20 @@ class Setup extends Command
         $output->writeln("-- Payment");
         $this->paymentUpgradeSchema->execute($this->schemaSetup, $output);
 
+        // Sales entities
+        $output->writeln("-- Sales entities");
+        $this->salesUpgradeSchema->execute($this->schemaSetup, $output);
+        $this->salesUpgradeData->execute($this->moduleDataSetup, $output);
+
         // PWA
-        $output->writeln("-- PWA Data");
+        $output->writeln("-- PWA data");
         $this->pwaUpgradeSchema->execute($this->schemaSetup, $output);
         $this->pwaBannerInstallSchema->execute($this->schemaSetup, $output);
         $this->pwaKeywordInstallSchema->execute($this->schemaSetup, $output);
 
         // Create new database schemas
         $output->writeln("-- Initialize miscellaneous schemas and data");
+        $this->shippingUpgradeSchema->execute($this->schemaSetup, $output);
         $this->performanceUpgradeSchema->execute($this->schemaSetup, $output);
         $this->refundWithoutReceiptInstallSchema->execute($this->schemaSetup, $output);
         $this->paymentExpressUpgradeSchema->execute($this->schemaSetup, $output);
