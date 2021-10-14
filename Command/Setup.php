@@ -25,6 +25,7 @@ use SM\Sales\Setup\UpgradeData as SalesUpgradeData;
 use SM\Sales\Setup\UpgradeSchema as SalesUpgradeSchema;
 use SM\Shift\Setup\UpgradeSchema as ShiftUpgradeSchema;
 use SM\Shipping\Setup\UpgradeSchema as ShippingUpgradeSchema;
+use SM\XRetail\Setup\UpgradeSchema as XRetailUpgradeSchema;
 
 class Setup extends Command
 {
@@ -113,6 +114,11 @@ class Setup extends Command
      */
     private $shippingUpgradeSchema;
 
+    /**
+     * @var XRetailUpgradeSchema
+     */
+    private $xRetailUpgradeSchema;
+
     public function __construct(
         State $appState,
         SchemaSetupInterface $schemaSetup,
@@ -132,6 +138,7 @@ class Setup extends Command
         SalesUpgradeSchema $salesUpgradeSchema,
         ShiftUpgradeSchema $shiftUpgradeSchema,
         ShippingUpgradeSchema $shippingUpgradeSchema,
+        XRetailUpgradeSchema $xRetailUpgradeSchema,
 
         string $name = null
     ) {
@@ -153,6 +160,7 @@ class Setup extends Command
         $this->salesUpgradeSchema = $salesUpgradeSchema;
         $this->shiftUpgradeSchema = $shiftUpgradeSchema;
         $this->shippingUpgradeSchema = $shippingUpgradeSchema;
+        $this->xRetailUpgradeSchema = $xRetailUpgradeSchema;
 
         parent::__construct($name);
     }
@@ -189,6 +197,10 @@ class Setup extends Command
      */
     public function setup(OutputInterface $output): void
     {
+        // Core
+        $output->writeln("-- Core");
+        $this->xRetailUpgradeSchema->execute($this->schemaSetup, $output);
+
         // Shift
         $output->writeln("-- Shift");
         $this->shiftUpgradeSchema->execute($this->schemaSetup, $output);
