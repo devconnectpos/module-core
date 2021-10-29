@@ -308,6 +308,18 @@ CREATE TABLE IF NOT EXISTS `sm_performance_product_cache_instance`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='sm_performance_product_cache_instance';
 
+CREATE TABLE IF NOT EXISTS `sm_role`
+(
+    `id`           int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Entity ID',
+    `name`         varchar(255)     NOT NULL COMMENT 'Demo Title',
+    `created_at`   timestamp        NOT NULL DEFAULT current_timestamp() COMMENT 'Creation Time',
+    `updated_time` timestamp        NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Modification Time',
+    `is_active`    smallint(6)      NOT NULL DEFAULT 1 COMMENT 'Is Active',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 5
+  DEFAULT CHARSET = utf8 COMMENT ='sm_role';
+  
 CREATE TABLE IF NOT EXISTS `sm_permission`
 (
     `id`           int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Entity ID',
@@ -438,18 +450,6 @@ CREATE TABLE IF NOT EXISTS `sm_retail_transaction`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='sm_retail_transaction';
-
-CREATE TABLE IF NOT EXISTS `sm_role`
-(
-    `id`           int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Entity ID',
-    `name`         varchar(255)     NOT NULL COMMENT 'Demo Title',
-    `created_at`   timestamp        NOT NULL DEFAULT current_timestamp() COMMENT 'Creation Time',
-    `updated_time` timestamp        NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Modification Time',
-    `is_active`    smallint(6)      NOT NULL DEFAULT 1 COMMENT 'Is Active',
-    PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  AUTO_INCREMENT = 5
-  DEFAULT CHARSET = utf8 COMMENT ='sm_role';
 
 CREATE TABLE IF NOT EXISTS `sm_shift_shift`
 (

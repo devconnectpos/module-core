@@ -73,6 +73,7 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         $option = [];
         $productOptions = $this->getData('product_options');
+
         if (isset($productOptions['options'])) {
             $option = array_merge($option, ['options' => $productOptions['options']]);
         }
@@ -86,57 +87,119 @@ class XOrderItem extends \SM\Core\Api\Data\Contract\ApiDataAbstract
             }
         }
 
-        // integrate gift card or another extension
-        if (!isset($option['options']) && isset($productOptions['aw_gc_amount'])) {
-            $fieldAllow = [
-                'Gift Card Amount'          => 'aw_gc_amount',
-                'Gift Card Sender'          => 'aw_gc_sender_name',
-                'Gift Card Recipient'       => 'aw_gc_recipient_name',
-                'Gift Card Sender Email'    => 'aw_gc_sender_email',
-                'Gift Card Recipient Email' => 'aw_gc_recipient_email',
-                'Gift Card Delivery Date'   => 'aw_gc_delivery_date',
-                'Gift Card Expire Date'     => 'aw_gc_expire',
-                'Gift Card Created Codes'   => 'aw_gc_created_codes',
-            ];
-            foreach ($fieldAllow as $field => $key) {
-                if (isset($productOptions[$key])) {
-                    $option['options'][] = [
-                        'key'   => $key,
-                        'label' => $field,
-                        'value' => $productOptions[$key],
-                    ];
-                }
-            }
+        if (!isset($option['options'])) {
+            $option['options'] = [];
         }
 
-        if (!isset($option['options']) && isset($productOptions['giftcard_created_codes'])) {
+        // AheadWorks gift card
+        if (isset($productOptions['aw_gc_amount'])) {
             $fieldAllow = [
-                'giftcard_amount'          => ['aw_gc_amount', 'Gift Card Amount'],
-                'giftcard_sender_name'     => ['aw_gc_sender_name', 'Gift Card Sender'],
-                'giftcard_recipient_name'  => ['aw_gc_recipient_name', 'Gift Card Recipient'],
-                'giftcard_sender_email'    => ['aw_gc_sender_email', 'Gift Card Sender Email'],
-                'giftcard_recipient_email' => ['aw_gc_recipient_email', 'Gift Card Recipient Email'],
-                'giftcard_message'         => ['aw_gc_message', 'Gift Card Message'],
-                'giftcard_lifetime'        => ['aw_gc_expire', 'Gift Card Expire Date'],
-                'giftcard_created_codes'   => ['aw_gc_created_codes', 'Gift Card Created Code'],
+                'aw_gc_amount'          => 'Gift Card Amount',
+                'aw_gc_sender_name'     => 'Gift Card Sender',
+                'aw_gc_recipient_name'  => 'Gift Card Recipient',
+                'aw_gc_sender_email'    => 'Gift Card Sender Email',
+                'aw_gc_recipient_email' => 'Gift Card Recipient Email',
+                'aw_gc_delivery_date'   => 'Gift Card Delivery Date',
+                'aw_gc_expire'          => 'Gift Card Expire Date',
+                'aw_gc_created_codes'   => 'Gift Card Created Codes',
             ];
-            foreach ($fieldAllow as $key => $value) {
-                if ($key === 'giftcard_amount') {
-                    $option['options'][] = [
-                        'key'   => $value[0],
-                        'label' => $value[1],
-                        'value' => $this->getData('price'),
-                    ];
-                } else {
-                    if (isset($productOptions[$key])) {
-                        $option['options'][] = [
-                            'key'   => $value[0],
-                            'label' => $value[1],
-                            'value' => $productOptions[$key],
-                        ];
+            $awGcOptions = [];
+
+            foreach ($fieldAllow as $key => $field) {
+                if (!isset($productOptions[$key])) {
+                    continue;
+                }
+                $awGcOptions[] = [
+                    'key'   => $key,
+                    'label' => $field,
+                    'value' => $productOptions[$key],
+                ];
+            }
+
+            $option['options'] += $awGcOptions;
+        }
+
+        // Magento gift card
+        if (isset($productOptions['giftcard_created_codes'])) {
+            $fieldAllow = [
+                'giftcard_amount'          => 'Gift Card Amount',
+                'giftcard_sender_name'     => 'Gift Card Sender',
+                'giftcard_recipient_name'  => 'Gift Card Recipient',
+                'giftcard_sender_email'    => 'Gift Card Sender Email',
+                'giftcard_recipient_email' => 'Gift Card Recipient Email',
+                'giftcard_message'         => 'Gift Card Message',
+                'giftcard_lifetime'        => 'Gift Card Expire Date',
+                'giftcard_created_codes'   => 'Gift Card Created Codes',
+            ];
+
+            $gcOptions = [];
+
+            foreach ($fieldAllow as $key => $field) {
+                if (!isset($productOptions[$key])) {
+                    continue;
+                }
+
+                $gcOptions[] = [
+                    'key'   => $key,
+                    'label' => $field,
+                    'value' => $productOptions[$key],
+                ];
+            }
+
+            $option['options'] += $gcOptions;
+        }
+
+        // Amasty gift card
+        if (isset($productOptions['am_giftcard_created_codes'])) {
+            $fieldAllow = [
+                'am_giftcard_amount'                 => 'Gift Card Amount',
+                'am_giftcard_amount_custom'          => 'Gift Card Custom Amount',
+                'am_giftcard_type'                   => 'Gift Card Type',
+                'am_giftcard_sender_name'            => 'Gift Card Sender',
+                'am_giftcard_sender_email'           => 'Gift Card Sender Email',
+                'am_giftcard_recipient_name'         => 'Gift Card Recipient',
+                'am_giftcard_recipient_email'        => 'Gift Card Recipient Email',
+                'is_date_delivery'                   => 'Gift Card Allow Delivery Date',
+                'am_giftcard_date_delivery'          => 'Gift Card Delivery Date',
+                'am_giftcard_date_delivery_timezone' => 'Gift Card Delivery Timezone',
+                'am_giftcard_image'                  => 'Gift Card Image',
+                'am_giftcard_message'                => 'Gift Card Message',
+                'am_giftcard_created_codes'          => 'Gift Card Created Codes',
+            ];
+
+            $amGcOptions = [];
+
+            foreach ($fieldAllow as $key => $field) {
+                if (!isset($productOptions[$key])) {
+                    continue;
+                }
+
+                $amGcOptions[] = [
+                    'key'   => $key,
+                    'label' => $field,
+                    'value' => $productOptions[$key],
+                ];
+            }
+
+
+            $buyRequest = $productOptions['info_buyRequest'] ?? [];
+
+            if (isset($buyRequest['gift_card'])) {
+                foreach($buyRequest['gift_card'] as $k => $v) {
+                    if (!isset($fieldAllow[$k])) {
+                        continue;
                     }
+
+                    $amGcOptions[] = [
+                        'key'   => $k,
+                        'label' => $fieldAllow[$k],
+                        'value' => $v,
+                    ];
                 }
             }
+
+            $option['options'] += $amGcOptions;
+
         }
 
         return $option;
