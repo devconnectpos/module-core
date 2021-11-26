@@ -4,8 +4,8 @@ namespace SM\Core\Command;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\Setup\SchemaSetupInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -35,7 +35,7 @@ class Setup extends Command
     private $appState;
 
     /**
-     * @var SchemaSetupInterface
+     * @var \Magento\Framework\Setup\SchemaSetupInterface
      */
     private $schemaSetup;
 
@@ -119,10 +119,15 @@ class Setup extends Command
      */
     private $xRetailUpgradeSchema;
 
+    /**
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
+
     public function __construct(
         State $appState,
-        SchemaSetupInterface $schemaSetup,
         ModuleDataSetupInterface $moduleDataSetup,
+        ObjectManagerInterface $objectManager,
 
         CustomerUpgradeSchema $customerUpgradeSchema,
         DiscountPerItemUpgradeSchema $discountPerItemUpgradeSchema,
@@ -143,7 +148,8 @@ class Setup extends Command
         string $name = null
     ) {
         $this->appState = $appState;
-        $this->schemaSetup = $schemaSetup;
+        $this->objectManager = $objectManager;
+        $this->schemaSetup = $objectManager->get('Magento\Framework\Setup\SchemaSetupInterface');
         $this->moduleDataSetup = $moduleDataSetup;
 
         $this->customerUpgradeSchema = $customerUpgradeSchema;
