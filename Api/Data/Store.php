@@ -98,4 +98,12 @@ class Store extends ApiDataAbstract
     public function getDefaultOrderAddress() {
         return $this->getData('default_order_address');
     }
+
+    public function getUnsecureBaseUrl() {
+        return $this->getData('unsecure_base_url');
+    }
+
+    public function getSecureBaseUrl() {
+        return $this->getData('secure_base_url');
+    }
 }
