@@ -149,7 +149,6 @@ class Setup extends Command
     ) {
         $this->appState = $appState;
         $this->objectManager = $objectManager;
-        $this->schemaSetup = $objectManager->get('Magento\Framework\Setup\SchemaSetupInterface');
         $this->moduleDataSetup = $moduleDataSetup;
 
         $this->customerUpgradeSchema = $customerUpgradeSchema;
@@ -190,6 +189,7 @@ class Setup extends Command
     {
         $output->writeln("---[  CONNECTPOS DATABASE SETUP SCRIPT  ]---");
 
+        $this->schemaSetup = $this->objectManager->get('Magento\Framework\Setup\SchemaSetupInterface');
         $this->appState->emulateAreaCode(Area::AREA_ADMINHTML, [$this, 'setup'], [$output]);
 
         $output->writeln("DONE!");
