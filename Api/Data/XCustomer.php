@@ -108,4 +108,9 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('retail_telephone_2');
     }
+
+    public function getRetailNote()
+    {
+        return $this->getData('retail_note');
+    }
 }
