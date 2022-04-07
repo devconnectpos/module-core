@@ -2,7 +2,7 @@
 	"name": "connectpos/module-core",
 	"description": "N/A",
 	"type": "magento2-module",
-  "version": "22.01.25",
+  "version": "22.04.07",
 	"license": [
 		"proprietary"
 	],
