@@ -534,7 +534,7 @@ class DataObject implements ArrayAccess
      * @return void
      * @link http://www.php.net/manual/en/arrayaccess.offsetset.php
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->data[$offset] = $value;
     }
@@ -547,7 +547,7 @@ class DataObject implements ArrayAccess
      * @return bool
      * @link http://www.php.net/manual/en/arrayaccess.offsetexists.php
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->data[$offset]) || array_key_exists($offset, $this->data);
     }
@@ -560,7 +560,7 @@ class DataObject implements ArrayAccess
      * @return void
      * @link http://www.php.net/manual/en/arrayaccess.offsetunset.php
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->data[$offset]);
     }
@@ -573,7 +573,7 @@ class DataObject implements ArrayAccess
      * @return mixed
      * @link http://www.php.net/manual/en/arrayaccess.offsetget.php
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if (isset($this->data[$offset])) {
             return $this->data[$offset];
