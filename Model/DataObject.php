@@ -573,7 +573,8 @@ class DataObject implements ArrayAccess
      * @return mixed
      * @link http://www.php.net/manual/en/arrayaccess.offsetget.php
      */
-    public function offsetGet($offset): mixed
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
     {
         if (isset($this->data[$offset])) {
             return $this->data[$offset];
