@@ -107,29 +107,34 @@ class RefundWithoutReceiptTransaction extends ApiDataAbstract
 
     public function getSellers()
     {
-        return explode(",", $this->getData('sellers'));
+        return explode(",", (string)$this->getData('sellers'));
     }
 
     public function getPaymentData()
     {
-        return json_decode($this->getData('payment_data'), true);
+        $data = $this->getData('payment_data');
+        if (empty($data)) {
+            return [];
+        }
+
+        return json_decode($data, true);
     }
-	
+
 	public function getSubtotalRefundAmount()
 	{
 		return $this->getData('subtotal_refund_amount');
 	}
-	
+
 	public function getRefundTaxAmount()
 	{
 		return $this->getData('tax_amount');
 	}
-	
+
 	public function getShiftAdjustmentId()
 	{
 		return $this->getData('shift_adjustment_id');
 	}
-	
+
 	public function getShiftId()
 	{
 		return $this->getData('shift_id');
