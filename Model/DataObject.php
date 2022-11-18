@@ -136,7 +136,7 @@ class DataObject implements ArrayAccess
             if ($data === (array)$data) {
                 $data = isset($data[$index]) ? $data[$index] : null;
             } elseif (is_string($data)) {
-                $data = explode(PHP_EOL, $data);
+                $data = explode(PHP_EOL, (string)$data);
                 $data = isset($data[$index]) ? $data[$index] : null;
             } elseif ($data instanceof \Magento\Framework\DataObject) {
                 $data = $data->getData($index);
@@ -159,7 +159,7 @@ class DataObject implements ArrayAccess
      */
     public function getDataByPath($path)
     {
-        $keys = explode('/', $path);
+        $keys = explode('/', (string)$path);
 
         $data = $this->data;
         foreach ($keys as $key) {

@@ -119,7 +119,7 @@ class XOrder extends ApiDataAbstract
 
     public function getSellers()
     {
-        return explode(",", $this->getData('sm_seller_ids'));
+        return explode(",", (string)$this->getData('sm_seller_ids'));
     }
 
     public function getSellersUsername()
@@ -221,25 +221,31 @@ class XOrder extends ApiDataAbstract
     {
         return $this->getData('comment_history');
     }
-    
+
     public function getOriginOrderId()
     {
         return $this->getData('origin_order_id');
     }
-    
+
     public function getOriginOrderRetailId()
     {
         return $this->getData('origin_order_retail_id');
     }
-    
+
     public function getRwrTransactionId()
     {
         return $this->getData('rwr_transaction_id');
     }
-    
+
     public function getExchangeOrderIds()
     {
-        return json_decode($this->getData('exchange_order_ids'), true);
+        $ids = $this->getData('exchange_order_ids');
+
+        if (empty($ids)) {
+            return [];
+        }
+
+        return json_decode($ids, true);
     }
 
     public function getItemAppliedTaxes()

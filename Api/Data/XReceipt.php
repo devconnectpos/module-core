@@ -92,7 +92,11 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
 
     public function getOrderInfo()
     {
-        return json_decode($this->getData('order_info'), true);
+        if (is_string($this->getData('order_info'))) {
+            return json_decode($this->getData('order_info'), true);
+        }
+
+        return [];
     }
 
     public function getCreatedAt()
@@ -195,7 +199,7 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     {
         return $this->getData('enable_customer_signature');
     }
-    
+
     public function getCustomTaxLabel()
     {
         return $this->getData('custom_tax_label');
