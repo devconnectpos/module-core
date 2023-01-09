@@ -25,7 +25,7 @@ class Advertisement extends ApiDataAbstract {
     public function getListMedia()
     {
         if (is_string($this->getData('list_media'))) {
-            return json_decode($this->getData('list_media'), true);
+            return json_decode((string)$this->getData('list_media'), true);
         }
         else {
             return [];

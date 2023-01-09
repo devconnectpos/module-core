@@ -93,7 +93,7 @@ class XReceipt extends \SM\Core\Api\Data\Contract\ApiDataAbstract
     public function getOrderInfo()
     {
         if (is_string($this->getData('order_info'))) {
-            return json_decode($this->getData('order_info'), true);
+            return json_decode((string)$this->getData('order_info'), true);
         }
 
         return [];
