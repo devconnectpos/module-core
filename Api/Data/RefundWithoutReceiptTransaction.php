@@ -117,7 +117,7 @@ class RefundWithoutReceiptTransaction extends ApiDataAbstract
             return [];
         }
 
-        return json_decode($data, true);
+        return json_decode((string)$data, true);
     }
 
 	public function getSubtotalRefundAmount()

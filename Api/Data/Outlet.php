@@ -45,7 +45,7 @@ class Outlet extends ApiDataAbstract
     public function getCashierIds()
     {
         if (is_string($this->getData('cashier_ids'))) {
-            return json_decode($this->getData('cashier_ids'), true);
+            return json_decode((string)$this->getData('cashier_ids'), true);
         } else {
             return [];
         }
@@ -135,7 +135,7 @@ class Outlet extends ApiDataAbstract
     {
         return $this->getData('location_id');
     }
-    
+
     public function getDefaultGuestCustomerEmail()
     {
         return $this->getData('default_guest_customer_email');

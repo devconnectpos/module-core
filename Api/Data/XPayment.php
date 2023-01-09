@@ -29,7 +29,7 @@ class XPayment extends ApiDataAbstract
     public function getPaymentData()
     {
         if (is_string($this->getData("payment_data"))) {
-            return json_decode($this->getData('payment_data'), true);
+            return json_decode((string)$this->getData('payment_data'), true);
         }
 
         return [];

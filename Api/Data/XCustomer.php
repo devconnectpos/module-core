@@ -87,7 +87,7 @@ class XCustomer extends \SM\Core\Api\Data\Contract\ApiDataAbstract
         if (!is_string($this->getData('retail_veriface'))) {
             return [];
         }
-        return json_decode($this->getData('retail_veriface'), true);
+        return json_decode((string)$this->getData('retail_veriface'), true);
     }
     public function getSubscription()
     {

@@ -245,7 +245,7 @@ class XOrder extends ApiDataAbstract
             return [];
         }
 
-        return json_decode($ids, true);
+        return json_decode((string)$ids, true);
     }
 
     public function getItemAppliedTaxes()
